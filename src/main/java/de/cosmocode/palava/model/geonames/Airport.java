@@ -24,6 +24,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreRemove;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -76,6 +79,30 @@ public final class Airport implements Geographical, JSONMapable {
     @Transient
     private transient LocationBase location;
 
+    /**
+     * Pre-persist callback which prevents inserts.
+     */
+    @PrePersist
+    protected void prePersist() {
+        throw new UnsupportedOperationException("Airport is read-only");
+    }
+
+    /**
+     * Pre-persist callback which prevents updates.
+     */
+    @PreUpdate
+    protected void preUpdate() {
+        throw new UnsupportedOperationException("Airport is read-only");
+    }
+
+    /**
+     * Pre-persist callback which prevents deletes.
+     */
+    @PreRemove
+    protected void preRemove() {
+        throw new UnsupportedOperationException("Airport is read-only");
+    }
+    
     @Override
     public LocationBase getLocation() {
         if (location == null) {
