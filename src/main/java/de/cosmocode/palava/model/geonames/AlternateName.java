@@ -91,7 +91,7 @@ public final class AlternateName implements AliasBase, Comparable<AlternateName>
     }
 
     /**
-     * Pre-persist callback which prevents updates.
+     * Pre-update callback which prevents updates.
      */
     @PreUpdate
     protected void preUpdate() {
@@ -99,7 +99,7 @@ public final class AlternateName implements AliasBase, Comparable<AlternateName>
     }
 
     /**
-     * Pre-persist callback which prevents deletes.
+     * Pre-remove callback which prevents deletes.
      */
     @PreRemove
     protected void preRemove() {

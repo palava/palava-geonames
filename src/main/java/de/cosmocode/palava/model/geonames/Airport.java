@@ -88,7 +88,7 @@ public final class Airport implements Geographical, JSONMapable {
     }
 
     /**
-     * Pre-persist callback which prevents updates.
+     * Pre-update callback which prevents updates.
      */
     @PreUpdate
     protected void preUpdate() {
@@ -96,7 +96,7 @@ public final class Airport implements Geographical, JSONMapable {
     }
 
     /**
-     * Pre-persist callback which prevents deletes.
+     * Pre-delete callback which prevents deletes.
      */
     @PreRemove
     protected void preRemove() {

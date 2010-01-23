@@ -86,7 +86,7 @@ public final class Toponym extends AbstractToponym implements Geographical {
     }
 
     /**
-     * Pre-persist callback which prevents updates.
+     * Pre-update callback which prevents updates.
      */
     @PreUpdate
     protected void preUpdate() {
@@ -94,7 +94,7 @@ public final class Toponym extends AbstractToponym implements Geographical {
     }
 
     /**
-     * Pre-persist callback which prevents deletes.
+     * Pre-delete callback which prevents deletes.
      */
     @PreRemove
     protected void preRemove() {
