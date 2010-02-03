@@ -40,7 +40,7 @@ import de.cosmocode.json.JSONRenderer;
 import de.cosmocode.palava.model.base.ReadOnly;
 import de.cosmocode.palava.model.business.AbstractLocation;
 import de.cosmocode.palava.model.business.Geographical;
-import de.cosmocode.palava.model.business.LocationBase;
+import de.cosmocode.palava.model.business.Location;
 import de.cosmocode.palava.model.geo.AbstractToponym;
 import de.cosmocode.palava.model.geo.ToponymBase;
 
@@ -75,7 +75,7 @@ public final class Toponym extends AbstractToponym implements Geographical {
     private Double longitude;
     
     @Transient
-    private transient LocationBase location;
+    private transient Location location;
 
     /**
      * Pre-persist callback which prevents inserts.
@@ -102,7 +102,7 @@ public final class Toponym extends AbstractToponym implements Geographical {
     }
 
     @Override
-    public LocationBase getLocation() {
+    public Location getLocation() {
         if (location == null) {
             location = new InternalLocation();
         }
@@ -110,7 +110,7 @@ public final class Toponym extends AbstractToponym implements Geographical {
     }
     
     /**
-     * Internal implementation of the {@link LocationBase} interface which
+     * Internal implementation of the {@link Location} interface which
      * owns a reference to the enclosing class and is able to directly manipulate the
      * corresponding values.
      *
