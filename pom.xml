@@ -2,7 +2,7 @@
   <parent>
     <artifactId>palava-parent</artifactId>
     <groupId>de.cosmocode.palava</groupId>
-    <version>2.0</version>
+    <version>2.0.5</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.cosmocode.palava</groupId>
@@ -10,28 +10,28 @@
   <name>Palava Geonames</name>
   <version>2.0-SNAPSHOT</version>
   <scm>
-  	<developerConnection>scm:svn:https://palava.svn.cosmocode.de/palava-geonames/trunk</developerConnection>
+    <developerConnection>scm:svn:https://palava.svn.cosmocode.de/palava-geonames/trunk</developerConnection>
   </scm>
   <dependencies>
-  	<dependency>
-  		<groupId>de.cosmocode.palava</groupId>
-  		<artifactId>palava-jpa</artifactId>
-  		<version>2.0-SNAPSHOT</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>de.cosmocode.palava</groupId>
-  		<artifactId>palava-model</artifactId>
-  		<version>2.0-SNAPSHOT</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>de.cosmocode.palava</groupId>
-  		<artifactId>palava-geo</artifactId>
-  		<version>2.0-SNAPSHOT</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.geonames</groupId>
-  		<artifactId>geonames</artifactId>
-  		<version>1.0</version>
-  	</dependency>
+    <dependency>
+      <groupId>de.cosmocode.palava</groupId>
+      <artifactId>palava-jpa</artifactId>
+      <version>2.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>de.cosmocode.palava</groupId>
+      <artifactId>palava-model</artifactId>
+      <version>2.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>de.cosmocode.palava</groupId>
+      <artifactId>palava-geo</artifactId>
+      <version>2.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.geonames</groupId>
+      <artifactId>geonames</artifactId>
+      <version>1.0</version>
+    </dependency>
   </dependencies>
 </project>
