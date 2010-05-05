@@ -27,12 +27,13 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import de.cosmocode.json.JSONMapable;
-import de.cosmocode.json.JSONRenderer;
 import de.cosmocode.palava.model.base.ReadOnly;
 import de.cosmocode.palava.model.business.AbstractLocation;
 import de.cosmocode.palava.model.business.Geographical;
 import de.cosmocode.palava.model.business.Location;
+import de.cosmocode.rendering.Renderer;
+import de.cosmocode.rendering.RenderingException;
+import de.cosmocode.rendering.RenderingLevel;
 
 /**
  * Airport data for Geonames integration under CC license:
@@ -43,7 +44,7 @@ import de.cosmocode.palava.model.business.Location;
 @Entity
 @Table(name = "geonames_airport")
 @ReadOnly
-public final class Airport implements Geographical, JSONMapable {
+public final class Airport implements Geographical {
     
     private String code;
     
@@ -182,8 +183,8 @@ public final class Airport implements Geographical, JSONMapable {
     }
     
     @Override
-    public JSONRenderer renderAsMap(JSONRenderer renderer) {
-        return renderer.
+    public void render(Renderer renderer, RenderingLevel level) throws RenderingException {
+        renderer.
             key("code").value(getCode()).
             key("name").value(getName()).
             key("cityName").value(getCityName()).

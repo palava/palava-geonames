@@ -33,13 +33,15 @@ import org.geonames.FeatureClass;
 
 import com.google.common.collect.Sets;
 
-import de.cosmocode.json.JSONRenderer;
 import de.cosmocode.palava.model.base.ReadOnly;
 import de.cosmocode.palava.model.business.AbstractLocation;
 import de.cosmocode.palava.model.business.Geographical;
 import de.cosmocode.palava.model.business.Location;
 import de.cosmocode.palava.model.geo.AbstractToponym;
 import de.cosmocode.palava.model.geo.ToponymBase;
+import de.cosmocode.rendering.Renderer;
+import de.cosmocode.rendering.RenderingException;
+import de.cosmocode.rendering.RenderingLevel;
 
 /**
  * Concrete entity implementation of the {@link ToponymBase} interface.
@@ -155,13 +157,13 @@ public final class Toponym extends AbstractToponym implements Geographical {
     }
     
     @Override
-    public JSONRenderer renderAsMap(JSONRenderer renderer) {
-        return 
-            super.renderAsMap(renderer).
+    public void render(Renderer renderer, RenderingLevel level) throws RenderingException {
+        super.render(renderer, level);
+        renderer.
             key("asciiName").value(getAsciiName()).
             key("featureClass").value(getFeatureClass()).
             key("featureCode").value(getFeatureCode()).
-            key("location").object(getLocation());
+            key("location").value(getLocation(), level);
     }
     
 }
