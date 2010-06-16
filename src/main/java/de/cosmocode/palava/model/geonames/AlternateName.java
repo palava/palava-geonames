@@ -47,9 +47,9 @@ import de.cosmocode.rendering.RenderingLevel;
 @Entity
 @Table(name = "geonames_alternate_names")
 @ReadOnly
-public final class AlternateName implements AliasBase, Comparable<AlternateName> {
+public final class AlternateName implements AliasBase {
     
-    private static final Ordering<AlternateName> ORDERING = 
+    public static final Ordering<AlternateName> ORDER_PREFERED_AND_NAME = 
         Ordering.natural().onResultOf(new Function<AlternateName, Boolean>() {
             
             @Override
@@ -129,10 +129,41 @@ public final class AlternateName implements AliasBase, Comparable<AlternateName>
     }
     
     @Override
-    public int compareTo(AlternateName that) {
-        return ORDERING.compare(this, that);
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((languageCode == null) ? 0 : languageCode.hashCode());
+        result = prime * result + ((toponym == null) ? 0 : toponym.hashCode());
+        return result;
     }
-    
+
+    @Override
+    public boolean equals(Object that) {
+        if (this == that) {
+            return true;
+        } else if (that == null) {
+            return false;
+        } else if (!(that instanceof AlternateName)) {
+            return false;
+        }
+        final AlternateName other = (AlternateName) that;
+        if (languageCode == null) {
+            if (other.languageCode != null) {
+                return false;
+            }
+        } else if (!languageCode.equals(other.languageCode)) {
+            return false;
+        }
+        if (toponym == null) {
+            if (other.toponym != null) {
+                return false;
+            }
+        } else if (!toponym.equals(other.toponym)) {
+            return false;
+        }
+        return true;
+    }
+
     @Override
     public void render(Renderer renderer, RenderingLevel level) throws RenderingException {
         renderer.

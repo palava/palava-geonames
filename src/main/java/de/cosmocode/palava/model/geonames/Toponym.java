@@ -17,7 +17,7 @@
 package de.cosmocode.palava.model.geonames;
 
 import java.util.Collections;
-import java.util.SortedSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -67,7 +67,7 @@ public final class Toponym extends AbstractToponym implements Geographical {
     private String featureCode;
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "toponym")
-    private SortedSet<AlternateName> alternateNames = Sets.newTreeSet();
+    private Set<AlternateName> alternateNames = Sets.newHashSet();
     
     private Double latitude;
     
@@ -152,8 +152,8 @@ public final class Toponym extends AbstractToponym implements Geographical {
     }
     
     @Override
-    public SortedSet<AlternateName> getAliases() {
-        return Collections.unmodifiableSortedSet(alternateNames);
+    public Set<AlternateName> getAliases() {
+        return Collections.unmodifiableSet(alternateNames);
     }
     
     @Override
